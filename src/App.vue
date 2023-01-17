@@ -92,9 +92,7 @@
 
     <div class="flex w-full">
       <div class="m-8 place-content-center">
-        <video width="500" height="500" controls="controls">
-          <source src="/assets/Tompa Demo (2021).mp4" type="video/mp4">
-        </video>
+        <iframe src="https://www.youtube.com/embed/9WIJQ6QJ_xQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <div class="divider divider-horizontal"></div>
       <div style="">My first introduction to 3D development began with VR game development.
