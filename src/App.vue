@@ -15,13 +15,10 @@
         </ul>
       </div>
     </div>
-    <div style="padding: 250px 100px;" class="grid grid-cols-3 gap-2">
+    <div style="padding: 250px 100px;" class="">
       <div class="pb-10 text-4xl font-black">Hello, I'm Fernando.</div>
-      <div></div>
-      <div></div>
       <div class="pb-10 text-4xl font-black">I enjoy web development and 3D art.</div>
-      <div class="pt-48 animate-pulse place-self-center">(Scroll down to see more)</div>
-      <div></div>
+      <div class="pl-60 pt-60 animate-pulse place-self-center">(Scroll down to see more)</div>
     </div>
     <div id="about" class=" text-5xl p-8 ml-32">About Me</div>
 
@@ -29,7 +26,7 @@
   <div style="padding: 10px 10px;  margin: 100px 0px;" id="outer">
     <div  v-show="theme=='lofi'" id="top" style=" z-index: 3;" class="flex w-full">
       <!--canvas-->
-      <div style="" class="mask mask-circle place-content-center">
+      <div style="min-width: 300px" class="mask mask-circle place-content-center">
 
         <Renderer ref="rendererC" antialias :orbit-ctrl="{ enableDamping: true }" resize="window">
           <Camera ref="cameraA" :position="{ z: 40 }" />
@@ -54,7 +51,7 @@
 
     <div v-show="theme=='black'" id="below" style="z-index: 4;" class="flex w-full">
       <!--canvas-->
-      <div style="" class="mask mask-circle place-content-center">
+      <div style="min-width: 300px" class="mask mask-circle place-content-center">
 
         <Renderer ref="rendererC" antialias :orbit-ctrl="{ enableDamping: true }" resize="window">
           <Camera ref="cameraA" :position="{ z: 40 }" />
@@ -90,14 +87,14 @@
 
     <div class="text-3xl p-8 ml-32">AR/VR</div>
 
-    <div class="flex w-full">
-      <div class="m-8 place-content-center">
-        <iframe src="https://www.youtube.com/embed/9WIJQ6QJ_xQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="divider divider-horizontal"></div>
+    <div>
       <div style="">My first introduction to 3D development began with VR game development.
         With a partner, we created a virtual reality video game based on a tower defense concept.
-        <br/><br/>Click the video on the left to see a video demo of this game.</div>
+        <br/><br/>Click the video on the below to see a video demo of this game.</div>
+        <br/>
+      <div class="p-10 flex w-full m-8 place-content-center">
+        <iframe style="height: 300px; width: 600px" src="https://www.youtube.com/embed/9WIJQ6QJ_xQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
     </div>
     <div class="text-3xl p-8 ml-32">Web Development</div>
     <div class="p-10 flex w-full">
@@ -108,7 +105,7 @@
         including <a style="color:lightblue" href="https://www.thebeautylabstl.com/">The Beauty Lab</a>, which I currently upkeep and maintain.</div>
     </div>
     <div v-show="theme=='black'" class="p-10 flex w-full">
-      <div class="place-content-center">
+      <div style="min-width: 300px" class="place-content-center">
         <Renderer ref="rendererC" antialias :orbit-ctrl="{ enableDamping: true }" resize="window">
           <Camera ref="cameraA" :position="{ z: 10 }" />
           <Scene>
@@ -133,7 +130,7 @@
         You can see an example of one of these plates on the left.</div>
     </div>
     <div v-show="theme=='lofi'" class="p-10 flex w-full">
-      <div class="place-content-center">
+      <div style="min-width: 300px" class="place-content-center">
         <Renderer ref="rendererC" antialias :orbit-ctrl="{ enableDamping: true }" resize="window">
           <Camera ref="cameraA" :position="{ z: 10 }" />
           <Scene :background="0xffffff">
