@@ -3,24 +3,30 @@
   <!--navbar-->
     <div style="z-index: 5; position: fixed; top:0; border-width: 1px ;border-bottom: 1px dashed;" class="navbar bg-base-100">
       <div class="flex-1">
-        <a v-if="theme == 'black'" style="font-size: 15px" @click="theme = 'lofi'; changeFill()" class="btn btn-ghost normal-case text-xl">Light Mode</a>
-        <a v-if="theme == 'lofi'" style="font-size: 15px" @click="theme = 'black'; changeFill()" class="btn btn-ghost normal-case text-xl">Dark Mode</a>
+        <a v-if="theme === 'black'" @click="theme = 'lofi'; changeFill()" class="btn btn-ghost normal-case text-xl">Light Mode</a>
+        <a v-if="theme === 'lofi'" @click="theme = 'black'; changeFill()" class="btn btn-ghost normal-case text-xl">Dark Mode</a>
       </div>
-      <div  style="font-size: 12px" class="flex-none">
-        <ul class="menu menu-horizontal px-1">
-          <li><a href="#about">About</a></li>
-          <li><a href="#work">My Work</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="/assets/fpimentel_resume.pdf">Resume</a></li>
-        </ul>
+      <div class="flex justify-end flex-1 px-2">
+        <div class="flex items-stretch">
+          <a class="btn btn-ghost rounded-btn" href="/assets/fpimentel_resume.pdf">Resume</a>
+          <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-ghost rounded-btn">sections</label>
+            <ul tabindex="0" class="border-2 menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+              <li><a href="#about">About</a></li>
+              <li><a href="#work">My Work</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
     <div style="padding: 250px 100px;" class="">
       <div class="pb-10 text-4xl font-black">Hello, I'm Fernando.</div>
       <div class="pb-10 text-4xl font-black">I enjoy web development and 3D art.</div>
-      <div class="animate-pulse place-self-center">(Scroll down to see more)</div>
+      <div style = "font-size: 15px;" class="animate-pulse place-self-center">(Scroll down to see more)</div>
     </div>
-    <div id="about" class=" text-5xl p-8 ml-32">About Me</div>
+    <div id="about" style="margin: 0px 50px 70px 50px"><hr/></div>
+    <div class=" text-5xl p-8 ml-32">About Me</div>
 
     <!--canvas div 1-->
   <div style="padding: 10px 10px;  margin: 100px 0px;" id="outer">
@@ -83,7 +89,8 @@
     Currently, I develop websites for clients both with and without 3D elements. I do this on my own terms as a freelancer, however I am now looking to fill
     a position where I can put my expertise to use with a team that shares my interests.</div>
 
-    <div id="work" class="text-5xl mt-20 p-8 ml-20">My Work</div>
+    <div id="work" style="margin: 0px 50px 70px 50px"><hr/></div>
+    <div class="text-5xl mt-20 p-8 ml-20">My Work</div>
 
     <div class="text-3xl p-8 ml-32">AR/VR</div>
 
@@ -92,11 +99,11 @@
         With a partner, we created a virtual reality video game based on a tower defense concept.
         <br/><br/>Click the video on the below to see a video demo of this game.</div>
         <br/>
-      <div class="p-10 flex w-full m-8 place-content-center">
+      <div class="p-10 flex w-full place-content-center">
         <iframe style="height: 200px; width: 400px" src="https://www.youtube.com/embed/9WIJQ6QJ_xQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </div>
-    <div class="text-3xl p-8 ml-32">Web Development</div>
+    <div class="text-3xl ml-32">Web Development</div>
     <div class="p-10 flex w-full">
       <div style="">Most of the professional work I have done involves web development of some
         sort, whether it is the development of 3D web components,
