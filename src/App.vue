@@ -6,7 +6,7 @@
         <a v-if="theme == 'black'" @click="theme = 'lofi'; changeFill()" class="btn btn-ghost normal-case text-xl">Light Mode</a>
         <a v-if="theme == 'lofi'" @click="theme = 'black'; changeFill()" class="btn btn-ghost normal-case text-xl">Dark Mode</a>
       </div>
-      <div  style="font-size: 15px" class="flex-none">
+      <div  style="font-size: 12px" class="flex-none">
         <ul class="menu menu-horizontal px-1">
           <li><a href="#about">About</a></li>
           <li><a href="#work">My Work</a></li>
