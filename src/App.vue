@@ -3,8 +3,8 @@
   <!--navbar-->
     <div style="z-index: 5; position: fixed; top:0; border-width: 1px ;border-bottom: 1px dashed;" class="navbar bg-base-100">
       <div class="flex-1">
-        <a v-if="theme == 'black'" @click="theme = 'lofi'; changeFill()" class="btn btn-ghost normal-case text-xl">Light Mode</a>
-        <a v-if="theme == 'lofi'" @click="theme = 'black'; changeFill()" class="btn btn-ghost normal-case text-xl">Dark Mode</a>
+        <a v-if="theme == 'black'" style="font-size: 15px" @click="theme = 'lofi'; changeFill()" class="btn btn-ghost normal-case text-xl">Light Mode</a>
+        <a v-if="theme == 'lofi'" style="font-size: 15px" @click="theme = 'black'; changeFill()" class="btn btn-ghost normal-case text-xl">Dark Mode</a>
       </div>
       <div  style="font-size: 12px" class="flex-none">
         <ul class="menu menu-horizontal px-1">
