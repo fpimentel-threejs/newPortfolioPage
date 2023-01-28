@@ -34,7 +34,7 @@
       <!--canvas-->
       <div style="min-width: 200px" class="mask mask-circle place-content-center">
 
-        <Renderer ref="rendererC" antialias :orbit-ctrl="{ enableDamping: true }" resize="window">
+        <Renderer ref="rendererC" :orbit-ctrl="{ enableDamping: true }" resize="window">
           <Camera ref="cameraA" :position="{ z: 40 }" />
           <Scene :background="0xffffff">
             <PointLight :position="{ y: 50, z: 50 }" />
@@ -59,7 +59,7 @@
       <!--canvas-->
       <div style="min-width: 200px" class="mask mask-circle place-content-center">
 
-        <Renderer ref="rendererC" antialias :orbit-ctrl="{ enableDamping: true }" resize="window">
+        <Renderer ref="rendererC"  :orbit-ctrl="{ enableDamping: true }" resize="window">
           <Camera ref="cameraA" :position="{ z: 40 }" />
           <Scene :background="0x000000">
             <PointLight :position="{ y: 50, z: 50 }" />
@@ -113,7 +113,7 @@
     </div>
     <div v-show="theme=='black'" class="p-10 flex w-full">
       <div style="min-width: 200px" class="place-content-center">
-        <Renderer ref="rendererC" antialias :orbit-ctrl="{ enableDamping: true }" resize="window">
+        <Renderer ref="rendererC" :orbit-ctrl="{ enableDamping: true }" resize="window">
           <Camera ref="cameraA" :position="{ z: 10 }" />
           <Scene>
             <PointLight :position="{ y: 50, z: 50 }" />
@@ -138,7 +138,7 @@
     </div>
     <div v-show="theme=='lofi'" class="p-10 flex w-full">
       <div style="min-width: 200px" class="place-content-center">
-        <Renderer ref="rendererC" antialias :orbit-ctrl="{ enableDamping: true }" resize="window">
+        <Renderer ref="rendererC" :orbit-ctrl="{ enableDamping: true }" resize="window">
           <Camera ref="cameraA" :position="{ z: 10 }" />
           <Scene :background="0xffffff">
             <PointLight :position="{ y: 50, z: 50 }" />
