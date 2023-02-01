@@ -3,8 +3,8 @@
   <!--navbar-->
     <div style="z-index: 5; position: fixed; top:0; border-width: 1px ;border-bottom: 1px dashed;" class="navbar bg-base-100">
       <div class="flex-1">
-        <a v-if="theme === 'black'" @click="theme = 'lofi'; changeFill()" class="btn btn-ghost normal-case text-xl">Light Mode</a>
-        <a v-if="theme === 'lofi'" @click="theme = 'black'; changeFill()" class="btn btn-ghost normal-case text-xl">Dark Mode</a>
+        <a v-if="theme === 'black'" @click="theme = 'lofi'; changeFill();" class="btn btn-ghost normal-case text-xl">Light Mode</a>
+        <a v-if="theme === 'lofi'" @click="theme = 'black'; changeFill();" class="btn btn-ghost normal-case text-xl">Dark Mode</a>
       </div>
       <div class="flex justify-end flex-1 px-2">
         <div class="flex items-stretch">
@@ -30,22 +30,32 @@
 
     <!--canvas div 1-->
   <div style="padding: 10px 10px;  margin: 100px 0px;" id="outer">
-    <div  v-show="theme=='lofi'" id="top" style=" z-index: 3;" class="flex w-full">
+    <div  id="top" style=" z-index: 3;" class="flex w-full">
       <!--canvas-->
       <div style="min-width: 200px" class="mask mask-circle place-content-center">
 
-        <Renderer ref="rendererC" :orbit-ctrl="{ enableDamping: true }" resize="window">
-          <Camera ref="cameraA" :position="{ z: 40 }" />
-          <Scene :background="0xffffff">
+        <Renderer :alpha='true' ref="rendererC" :orbit-ctrl="{ enableDamping: true }" resize="window">
+          <Camera ref="cameraA" :position="{ y: 0, z: 50 }" />
+          <Scene>
             <PointLight :position="{ y: 50, z: 50 }" />
 
-            <Points ref="starsL" :position="{x: -45, y:-40, z:-40}" :rotation="{ x: 0}"/>
-            <GltfModel
-                src="assets/grabMeText_light.gltf"
+            <Points ref="stars" :position="{x: -5, y:-5, z:-20}"/>
+            <Text
+                  text = 'grab me'
+                  font-src="/assets/The 2K12_Regular.json"
+                  align="center"
+                  :size="3"
+                  :height=".5"
+                  :position="{ x: 0, y: 0, z: 0 }"
+            >
+              <BasicMaterial ref="fontMat" :color="fontColor"/>
+            </Text>
+            <!--<GltfModel
+                src="assets/grabmetext.gltf"
                 @load="onReady"
                 @progress="onProgress"
                 @error="onError"
-            />
+            />-->
           </Scene>
         </Renderer>
       </div>
@@ -55,31 +65,7 @@
       <div style="">I am a web developer with a passion for computer graphics. Because of this I incorporate my knowledge of 3D design into the websites I create. To see what I mean, try clicking and dragging the space on the left.<br/><br/>This is a 3D canvas.</div>
     </div>
 
-    <div v-show="theme=='black'" id="below" style="z-index: 4;" class="flex w-full">
-      <!--canvas-->
-      <div style="min-width: 200px" class="mask mask-circle place-content-center">
 
-        <Renderer ref="rendererC"  :orbit-ctrl="{ enableDamping: true }" resize="window">
-          <Camera ref="cameraA" :position="{ z: 40 }" />
-          <Scene :background="0x000000">
-            <PointLight :position="{ y: 50, z: 50 }" />
-
-            <Points ref="stars" :position="{x: -45, y:-40, z:-40}" :rotation="{ x: 0}"/>
-            <GltfModel
-                src="assets/grabMeText.gltf"
-                @load="onReady"
-                @progress="onProgress"
-                @error="onError"
-            />
-          </Scene>
-        </Renderer>
-      </div>
-
-      <div class="divider divider-horizontal"></div>
-
-      <div style="">I am a web developer with a passion for computer graphics. Because of this I incorporate my knowledge of 3D design into the websites
-        I create. To see what I mean, try clicking and dragging the space on the left.<br/><br/>This is a 3D canvas.</div>
-    </div>
   </div>
 
     <div class="p-10">I began my journey with software development at McNeese State University where I earned my bachelors of science in computer science
@@ -111,9 +97,9 @@
         for small businesses within e-commerce platforms for many clients,
         including <a style="color:lightblue" href="https://www.thebeautylabstl.com/">The Beauty Lab</a>, which I currently upkeep and maintain.</div>
     </div>
-    <div v-show="theme=='black'" class="p-10 flex w-full">
+    <div class="p-10 flex w-full">
       <div style="min-width: 200px" class="place-content-center">
-        <Renderer ref="rendererC" :orbit-ctrl="{ enableDamping: true }" resize="window">
+        <Renderer :alpha='true' ref="rendererC" :orbit-ctrl="{ enableDamping: true }" resize="window">
           <Camera ref="cameraA" :position="{ z: 10 }" />
           <Scene>
             <PointLight :position="{ y: 50, z: 50 }" />
@@ -134,32 +120,7 @@
         which involves letting the user design their own UK license plate
         within a 3D space, setting parameters for the plate's shape, border, and identifying
         markings, as well as dynamically rendering text for the plate's number.<br/><br/>
-        You can see an example of one of these plates on the left.</div>
-    </div>
-    <div v-show="theme=='lofi'" class="p-10 flex w-full">
-      <div style="min-width: 200px" class="place-content-center">
-        <Renderer ref="rendererC" :orbit-ctrl="{ enableDamping: true }" resize="window">
-          <Camera ref="cameraA" :position="{ z: 10 }" />
-          <Scene :background="0xffffff">
-            <PointLight :position="{ y: 50, z: 50 }" />
-            <AmbientLight :position="{ y: 5, z: 2 }" :intensity=".5" />
-            <GltfModel
-                src="assets/PLATE_EXAMPLE.gltf"
-                @load="onReady"
-                @progress="onProgress"
-                @error="onError"
-            />
-          </Scene>
-        </Renderer>
-      </div>
-      <div class="divider divider-horizontal"></div>
-      <div>
-        An example of professional 3D development I've done involves a small 3D component
-        for <a style="color:lightblue" href="https://www.utopiaplates.co.uk/">Utopia Plates</a>
-        which involves letting the user design their own UK license plate
-        within a 3D space, setting parameters for the plate's shape, border,
-        and identifying markings, as well as dynamically rendering text for the
-        plate's number.<br/><br/> You can see an example of one of these plates on the left.</div>
+        You can interact with the example of one of these plates on the left.</div>
     </div>
     <div class="p-10 flex w-full">
       <div>Other work I do involves personal passion projects like <a style="color:lightblue" href="https://polite-elf-0edf20.netlify.app/">this one</a>,
@@ -231,33 +192,36 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { TextureLoader, BufferAttribute, BufferGeometry, PointsMaterial } from 'three'
-import { AmbientLight, GltfModel, Camera, PointLight, Renderer, Scene, Points } from 'troisjs'
+import {ref, onMounted } from 'vue'
+import { BufferAttribute, BufferGeometry, PointsMaterial } from 'three'
+import { BasicMaterial, Text, AmbientLight, GltfModel, Camera, PointLight, Renderer, Scene, Points } from 'troisjs'
 const rendererC = ref()
 const stars = ref()
-const starsL = ref()
+const fontMat = ref()
 let cameraA = ref()
 const theme = ref('black')
 let fillColor = ref('#ffffff')
+let fontColor = ref(0x34ff68)
+let starColor = ref(0xffffff)
 
 function changeFill(){
   if(fillColor == '#000000'){
     fillColor = '#ffffff'
+    starColor = 0xffffff
+    fontColor = 0x34ff68
   }
   else{
     fillColor = '#000000'
+    starColor = 0x000000
+    fontColor = 0xff0000
   }
+
+  console.log(fontColor)
 }
 
-const material = new PointsMaterial({
-  size: .3,
+const starMaterial = new PointsMaterial({
+  size: .5,
   color: 0xffffff
-})
-
-const materialL = new PointsMaterial({
-  size: .3,
-  color: 0x000000
 })
 
 const geometry = new BufferGeometry();
@@ -265,7 +229,7 @@ const geometry = new BufferGeometry();
 const getRandomParticlePos = (particleCount) => {
   const arr = new Float32Array(particleCount * 3);
   for(let i = 0; i < particleCount; i++) {
-    arr[i] = (Math.random() - .05) * 100;
+    arr[i] = (Math.random() - .5) * 100;
   }
   return arr;
 }
@@ -275,19 +239,43 @@ geometry.setAttribute(
     new BufferAttribute(getRandomParticlePos(7000),3)
 );
 
-
-
 onMounted(() => {
   const renderer = rendererC.value
   const star = stars.value
+  const font = fontMat.value
   star.setGeometry(geometry)
-  star.setMaterial(material)
-  const starL = starsL.value
-  starL.setGeometry(geometry)
-  starL.setMaterial(materialL)
+  star.setMaterial(starMaterial)
+
+  function setStarColor(){
+    if(starColor == 0xffffff){
+      return 0xffffff
+    }
+    else if(starColor == 0x000000){
+      return 0x000000
+    }
+    else{
+      return 0xffffff
+    }
+  }
+
+  function setFontColor(){
+    if(fontColor == 0x34ff68){
+      return 0x34ff68
+    }
+    else if(fontColor == 0xff0000){
+      return 0xff0000
+    }
+    else{
+      return 0x34ff68
+    }
+  }
 
   renderer.onBeforeRender(() => {
+    star.mesh.rotation.x += 0.001
+    star.mesh.rotation.z += 0.0005
 
+    star.mesh.material.color.setHex(setStarColor())
+    font.material.color.setHex(setFontColor())
   })
 
 
